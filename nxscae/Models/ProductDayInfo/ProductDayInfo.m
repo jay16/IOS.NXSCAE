@@ -7,7 +7,12 @@
 //
 
 #import "ProductDayInfo.h"
+#import "DatabaseUtils+Product.h"
 
 @implementation ProductDayinfo
 
++ (NSArray *)list {
+    DatabaseUtils *databaseUtils = [[DatabaseUtils alloc] init];
+    return [databaseUtils productDayinfos];
+}
 @end

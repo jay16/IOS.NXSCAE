@@ -24,4 +24,6 @@
 @property (nonatomic, strong) NSNumber *currentGains;
 @property (nonatomic, strong) NSNumber *totalAmount;
 @property (nonatomic, strong) NSNumber *totalMoney;
+
++ (NSArray *)list;
 @end

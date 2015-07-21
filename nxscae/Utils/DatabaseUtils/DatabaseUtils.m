@@ -100,8 +100,7 @@
 - (NSString *) createTableProductCache {
     return [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (             \
             id integer PRIMARY KEY AUTOINCREMENT,                                   \
-            parent_id integer NOT NULL,                                             \
-            %@ varchar(1000) NOT NULL,                                              \
+            %@ text NOT NULL,                                                       \
             %@ datetime NOT NULL DEFAULT (datetime(CURRENT_TIMESTAMP,'localtime')), \
             %@ datetime NOT NULL DEFAULT (datetime(CURRENT_TIMESTAMP,'localtime'))  \
             );                                                                      \

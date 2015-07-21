@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "DatabaseUtils+Product.h"
 #import "FMDB.h"
-#import "FileUtils.h"
 #import "const.h"
+#import "ProductDayinfo.h"
+#import "FileUtils.h"
 #import "ExtendNSLogFunctionality.h"
 
 @implementation DatabaseUtils (Product)
@@ -134,5 +135,46 @@
                            ColumnContent,
                            jsonString];
     [self executeSQL:insertSQL];
+}
+
+- (NSArray *)productDayinfos {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSString *selectSQL = [NSString stringWithFormat:@"select %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@;",
+                         ColumnCode,
+                         ColumnFullName,
+                         ColumnOpenPrice,
+                         ColumnCurPrice,
+                         ColumnTotalAmount,
+                         ColumnTotalMoney,
+                         ColumnCurrentGains,
+                         ColumnYesterBlancePrice,
+                         ColumnHighPrice,
+                         ColumnLowPrice,
+                         TNProductDayInfo];
+    
+    ProductDayinfo *dayinfo;
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
+    if ([db open]) {
+        FMResultSet *s = [db executeQuery:selectSQL];
+        while([s next]) {
+            dayinfo                    = [[ProductDayinfo alloc] init];
+            dayinfo.code               = [s stringForColumnIndex:0];
+            dayinfo.fullname           = [s stringForColumnIndex:1];
+            dayinfo.openPrice          = [NSNumber numberWithDouble:[s doubleForColumnIndex:2]];
+            dayinfo.curPrice           = [NSNumber numberWithDouble:[s doubleForColumnIndex:3]];
+            dayinfo.totalAmount        = [NSNumber numberWithInt:[s doubleForColumnIndex:4]];
+            dayinfo.totalMoney         = [NSNumber numberWithDouble:[s doubleForColumnIndex:5]];
+            dayinfo.currentGains       = [NSNumber numberWithDouble:[s doubleForColumnIndex:6]];
+            dayinfo.yesterBalancePrice = [NSNumber numberWithDouble:[s doubleForColumnIndex:7]];
+            dayinfo.highPrice          = [NSNumber numberWithDouble:[s doubleForColumnIndex:8]];
+            dayinfo.lowPrice           = [NSNumber numberWithDouble:[s doubleForColumnIndex:9]];
+            
+            [array addObject:dayinfo];
+            dayinfo = nil;
+        }
+        [db close];
+    }
+    
+    return [NSArray arrayWithArray: array];
 }
 @end

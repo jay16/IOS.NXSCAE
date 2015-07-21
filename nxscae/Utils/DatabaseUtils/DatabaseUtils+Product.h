@@ -18,7 +18,7 @@
 
 
 - (NSInteger)findOrCreateProduct:(NSDictionary *)product Time:(NSString *)time;
-
+- (NSArray *)productDayinfos;
 @end
 
 #endif
