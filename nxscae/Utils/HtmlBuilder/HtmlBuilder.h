@@ -23,7 +23,6 @@
 
 - (void)clear;
 - (NSString *)string;
-- (void)wrap:(NSString *)tagName;
 - (void)script:(NSString *)fileName;
 - (void)stylesheet:(NSString *)fileName;
 - (void)tag:(NSString *)tagName Content:(NSString *)content Attributes:(NSDictionary *)attrDict;
@@ -31,4 +30,7 @@
 
 - (void)tag:(NSString *)tagName Content:(NSString *)content;
 - (void)tag:(NSString *)tagName Contents:(NSArray *)contents;
+
+- (void)wrap:(NSString *)tagName Attributes:(NSDictionary *)attrDict;
+- (void)wrap:(NSString *)tagName;
 @end
