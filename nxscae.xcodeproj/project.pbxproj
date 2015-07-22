@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C419D29F1B5F79B3008A2C66 /* HtmlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C419D29E1B5F79B3008A2C66 /* HtmlBuilder.m */; };
 		C44554401B5D19B100E300B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C445543F1B5D19B100E300B8 /* main.m */; };
 		C44554431B5D19B100E300B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C44554421B5D19B100E300B8 /* AppDelegate.m */; };
 		C44554461B5D19B100E300B8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C44554451B5D19B100E300B8 /* ViewController.m */; };
@@ -48,6 +49,8 @@
 		35011A96913A56170FBD59A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		430898F6E6160888941007A9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		853D365B89E315AAB006368B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C419D29D1B5F79B3008A2C66 /* HtmlBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlBuilder.h; sourceTree = "<group>"; };
+		C419D29E1B5F79B3008A2C66 /* HtmlBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HtmlBuilder.m; sourceTree = "<group>"; };
 		C445543A1B5D19B100E300B8 /* nxscae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nxscae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C445543E1B5D19B100E300B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C445543F1B5D19B100E300B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,6 +126,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C419D29C1B5F79A1008A2C66 /* HtmlBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				C419D29D1B5F79B3008A2C66 /* HtmlBuilder.h */,
+				C419D29E1B5F79B3008A2C66 /* HtmlBuilder.m */,
+			);
+			path = HtmlBuilder;
+			sourceTree = "<group>";
+		};
 		C44554311B5D19B100E300B8 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +203,7 @@
 		C47F87A21B5D407600AFFDEC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C419D29C1B5F79A1008A2C66 /* HtmlBuilder */,
 				C47F87A31B5D407600AFFDEC /* DatabaseUtils */,
 				C47F87A81B5D407600AFFDEC /* DataHelper */,
 				C47F87AF1B5D407600AFFDEC /* DateUtils */,
@@ -481,6 +494,7 @@
 				C47F88331B5D415000AFFDEC /* Product.m in Sources */,
 				C47F88441B5D538C00AFFDEC /* ProductDayInfo.m in Sources */,
 				C47F88371B5D418F00AFFDEC /* ProductCache.m in Sources */,
+				C419D29F1B5F79B3008A2C66 /* HtmlBuilder.m in Sources */,
 				C47F87C11B5D407600AFFDEC /* ApiHelper.m in Sources */,
 				C47F882A1B5D413900AFFDEC /* HttpResponse.m in Sources */,
 				C47F87C41B5D407600AFFDEC /* DateUtils.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "HttpUtils.h"
+#import "HtmlBuilder.h"
 #import "Product.h"
 #import "ProductDayInfo.h"
 
@@ -29,22 +30,23 @@
         [[[Product alloc] init] refresh];
     }
     
-    NSString *html=@"<html>", *table = @"<table class='table table-strip table-condensed table-bordered'>", *tr;
+    NSString *tr;
+    
+    NSMutableArray *trs = [[NSMutableArray alloc] init];
     for(ProductDayinfo *dayinfo in [ProductDayinfo list]) {
-        tr = [NSString stringWithFormat:@"<tr><td>%@</td><td>%@</td><td>%@</td></tr>", dayinfo.fullname, dayinfo.curPrice, dayinfo.currentGains];
-        table = [table stringByAppendingString:tr];
+        [trs addObject:[HtmlBuilder tag:@"td" Contents:@[dayinfo.fullname, dayinfo.curPrice, dayinfo.currentGains]]];
     }
-    table = [table stringByAppendingString:@"</table>"];
+    tr = [HtmlBuilder tag:@"tr" Contents:[NSArray arrayWithArray:trs]];
     
-    html = [html stringByAppendingString:@"<script src='jquery-2.1.1.min.js' type='text/javascript'></script>"];
-    html = [html stringByAppendingString:@"<script src='bootstrap.320.min.js' type='text/javascript'></script>"];
-    html = [html stringByAppendingString:@"<link href='bootstrap.320.min.css' media='screen' rel='stylesheet' type='text/css'>"];
-    
-    html = [html stringByAppendingString:table];
-    html = [html stringByAppendingString:@"</html>"];
+    HtmlBuilder *builder = [[HtmlBuilder alloc] init];
+    [builder script:@"jquery-2.1.1.min.js"];
+    [builder script:@"bootstrap.320.min.js"];
+    [builder stylesheet:@"bootstrap.320.min.css"];
+    [builder tag:@"table" Content:tr Attributes:@{@"class":@"table table-strip table-condensed table-bordered"}];
+    [builder wrap:@"html"];
     
     NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-    [self.webView loadHTMLString:html baseURL:baseURL
+    [self.webView loadHTMLString:[builder string] baseURL:baseURL
      ];
 }
 
